@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omni-Générateur Absolu (OGA) - Le Nexus</title>
+    <style>
+        /* Le CSS minimaliste pour la page */
+        body { font-family: sans-serif; background-color: #1a1a2e; color: #e9e9f2; margin: 40px; }
+        h1 { color: #00bcd4; }
+        #app { max-width: 800px; margin: 0 auto; padding: 20px; background-color: #0f0f1d; border-radius: 10px; box-shadow: 0 0 20px rgba(0, 188, 212, 0.5); }
+        textarea { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #00bcd4; background-color: #2b2b40; color: #e9e9f2; border-radius: 5px; box-sizing: border-box; }
+        button { padding: 10px 20px; background-color: #e91e63; color: white; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s; }
+        button:hover { background-color: #c2185b; }
+        #resultat { margin-top: 20px; padding: 15px; border: 1px dashed #e91e63; white-space: pre-wrap; background-color: #2b2b40; border-radius: 5px; }
+        .footer { text-align: center; margin-top: 30px; font-size: 0.8em; color: #888; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>🚀 Omni-Générateur Absolu (OGA)</h1>
+        <p>Entrez votre prompt (texte, code, image...) :</p>
+        <textarea id="prompt" rows="5" placeholder="Ex: 'fonction Python pour trier un tableau' ou 'dessine un paysage nébuleux en 32K'"></textarea>
+        <button onclick="genererOGA()">Générer l'Absolu</button>
+        
+        <h2>Résultat OGA</h2>
+        <pre id="resultat">Le résultat de l'OGA apparaîtra ici...</pre>
+        
+        <div class="footer">Propulsé par le Nexus OGA.</div>
+    </div>
+
+    <script>
+        function genererOGA() {
+            const prompt = document.getElementById('prompt').value;
+            const resultatDiv = document.getElementById('resultat');
+            
+            if (!prompt) {
+                resultatDiv.textContent = "Veuillez entrer un prompt !";
+                return;
+            }
+
+            // Affiche un message de chargement
+            resultatDiv.textContent = "✨ OGA est en train de s'auto-améliorer et de générer... Veuillez patienter.";
+
+            // --- SIMULATION D'APPEL À L'API PYTHON OGA ---
+            
+            // En réalité, ici, vous feriez une requête AJAX/Fetch vers votre serveur Python (FastAPI/Flask)
+            // qui exécute la classe OmniGenerateurAbsolu.
+            
+            // Simulation des réponses basées sur les mots-clés du prototype Python :
+            const promptLower = prompt.toLowerCase();
+            let simulationResult;
+            
+            if (promptLower.includes('code') || promptLower.includes('fonction')) {
+                simulationResult = `💻 [CodeX-Ultimate] | Tps: 0.35s\nCode parfait pour: '${prompt}'.\n\ndef solution_parfaite():\n    return 'Succès!'`;
+            } else if (promptLower.includes('image') || promptLower.includes('dessine')) {
+                simulationResult = `🖼️ [DALL·E ∞] | Tps: 2.15s\nRendu 32K hyper-réaliste pour: '${prompt}'\n- Lien OGA: /worlds/${Math.floor(Math.random() * 10000)}.oga`;
+            } else {
+                simulationResult = `🧠 [Méta-LLM] | Tps: 0.42s\nRéponse complète et philosophique à: '${prompt}'.`;
+            }
+
+            // Simule la latence du serveur
+            setTimeout(() => {
+                resultatDiv.textContent = simulationResult;
+            }, 3000); // Attendre 3 secondes pour simuler le temps de calcul OGA
+        }
+    </script>
+</body>
+</html>
